@@ -1,7 +1,7 @@
-# POSM Web Map Reader
+#  Web Map Reader
 
 ## **Overview**
-POSM Web Map Reader is an **Electron.js-based GIS application** that integrates **Esri ArcGIS API, Express.js, and a SQL/Access database** to manage, visualize, and analyze pipeline inspections. The application provides tools for searching, filtering, and displaying pipeline asset data in compliance with **U.S. standards**.
+Web Map Reader is an **Electron.js-based GIS application** that integrates **Esri ArcGIS API, Express.js, and a SQL/Access database** to manage, visualize, and analyze pipeline inspections. The application provides tools for searching, filtering, and displaying pipeline asset data in compliance with **U.S. standards**.
 
 The system includes:
 - **GIS Map Visualization** (Using Esri’s JavaScript API)
