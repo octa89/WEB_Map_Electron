@@ -1,0 +1,132 @@
+html,
+body,
+#viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#launchButton {
+    position: absolute;
+    top: 125px;
+    left: 10px;
+    z-index: 1000;
+    padding: 10px 20px;
+    background-color: #0079c1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#sign-in {
+    position: absolute;
+    top: 200px;
+    left: 10px;
+    z-index: 1000;
+    padding: 10px 20px;
+    background-color: #0079c1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#launchButton:hover {
+    background-color: #666666;
+}
+
+.posm-logo-container {
+    position: fixed;
+    /* Fixed positioning relative to the viewport */
+    right: 20px;
+    /* Left padding from the viewport edge */
+    bottom: 20px;
+    /* Bottom padding from the viewport edge */
+    z-index: 1000;
+    /* High z-index to ensure it stays on top of other content */
+}
+
+.posm-logo-container img {
+    display: block;
+    /* Ensures no extra space below the image */
+    width: 250px;
+    /* Fixed width, adjust as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+    opacity: 0.9;
+    /* Making the logo slightly transparent can help integrate it into the design */
+    transition: opacity 0.3s ease;
+    /* Smooth transition for hover effects */
+}
+
+.posm-logo-container img:hover {
+    opacity: 1;
+    /* Full opacity on hover for better interaction feedback */
+}
+
+/* Button Styles */
+/* Positioning the button container */
+.button-container {
+    position: fixed;
+    /* Use 'absolute' if the map container is positioned */
+    bottom: 10px;
+    /* Distance from the bottom */
+    left: 600px;
+    /* Distance from the left */
+    z-index: 1000;
+    /* Ensures the buttons are above the map */
+}
+
+/* Styling the buttons as previously defined */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.3s ease;
+    outline: none;
+    color: white;
+    background-image: linear-gradient(to right, #000000,#203A43, #2C5364, #2C5364);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.10);
+    box-shadow: 0 6px 30px rgba(255, 255, 255, 0.3),
+                0 0 20px rgba(0, 0, 0, 0.6);
+    background-image: linear-gradient(to right, rgba(62, 81, 81, 0.8), rgba(222, 203, 164, 0.8)), 
+                      url('../../assets/POSMBlack.webp');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+#progress-bar-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px; /* Adjust the size as needed */
+    height: 100px;
+    z-index: 9999;
+    display: none; /* Hide initially, show when needed */
+}
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: rgb(0, 0, 0); /* Same color as the progress bar */
+}

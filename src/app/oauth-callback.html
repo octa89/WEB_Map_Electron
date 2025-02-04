@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OAuth Callback</title>
+    <script src="https://js.arcgis.com/4.29/"></script>
+    <script>
+        require(['esri/identity/IdentityManager'], function (IdentityManager) {
+            IdentityManager.completeOAuthSignIn(window.location.href)
+                .then(function () {
+                    window.opener.postMessage('oauth-success', window.location.origin);
+                    window.close();
+                })
+                .catch(function (error) {
+                    window.opener.postMessage('oauth-failure', window.location.origin);
+                    window.close();
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>OAuth Callback</h1>
+    <p>Processing OAuth response...</p>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POSM Indicators</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=cyrillic">
+    <link rel="stylesheet" href="./dash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment/dist/chartjs-adapter-moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <img src="../../assets/POSMBlack.png" alt="POSM Logo">
+            Indicators
+        </div>
+        <div class="main-container">
+            <div class="left-container">
+            <div class="canvas-container">
+                <div class="search-container">
+                    <h2>Search Scores</h2>
+                    <div class="search-controls">
+                        <input type="text" id="searchInput" list="suggestions" placeholder="Search assets...">
+                        <datalist id="suggestions"></datalist>
+                        <button id="okButton">OK</button>
+                        <button id="clearButton">Clear Table</button>
+                    </div>
+                    <div class="table-scroll">
+                        <table id="assetTable">
+                            <thead>
+                                <tr>
+                                    <th data-column="AssetID" data-label="Asset ID">Asset ID</th>
+                                    <th data-column="TemplateName" data-label="Template Name">Template Name</th>
+                                    <th data-column="Date" data-label="Date">Date</th>
+                                    <th data-column="structRating" data-label="Structure/Maintenance Rating">Structure/Maintenance Rating</th>
+                                    <th data-column="City" data-label="City">City</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                    <script src="./csearch.js"></script>
+                    <canvas id="myChart"></canvas>
+                    <div class="date-inputs">
+                        <label for="minDate">Start Date</label>
+                        <input type="date" id="minDate" onchange="dateFilter()">
+                        <label for="maxDate">End Date</label>
+                        <input type="date" id="maxDate" onchange="dateFilter()">
+                    </div>
+                </div>
+                <div class="canvas-container" id="chart2-container">
+                    <canvas id="myChart2"></canvas>
+                </div>
+             <!--    <div class="canvas-container" id="chart3-container">
+                    <canvas id="myChart3"></canvas>
+                </div> -->
+                
+            </div>
+            <div class="table-container">
+                <h2>Inspections by Template</h2>
+                <table id="inspectionsTable">
+                    <thead>
+                        <tr>
+                            <th>Template Name</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+                <script src="./insptable.js"></script>
+            </div>
+            
+    <script src="./dash.js"></script>
+</body>
+
+</html>

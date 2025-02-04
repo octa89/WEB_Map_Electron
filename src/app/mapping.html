@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POSM GIS Data Fields Update</title>
+  <link rel="stylesheet" href="./mapping.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Update POSM GIS Data Fields</h1>
+    <div id="portalDetails"></div>
+
+    <h2>Extract Layer Attributes from selected layer</h2>
+    <div class="form-group">
+      <select id="layerTitle" class="form-control">
+        <option value="">Select a layer</option>
+      </select>
+    </div>
+    <button id="loadLayer" class="btn-primary">Load Layer</button>
+
+    <div id="attributesOutput"></div>
+
+    <h2>Field Mapping to POSMGIS Update</h2>
+    <div id="fieldPairing"></div>
+    <button id="savePairs" class="btn-primary">Save Pairs</button>
+  </div>
+  <script type="module" src="./mapping.js"></script>
+</body>
+</html>

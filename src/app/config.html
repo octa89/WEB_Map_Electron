@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Configuration</title>
+    <!-- Include your CSS and other head content -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./config.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Edit Configuration</h1>
+        <form id="configForm">
+            <div class="form-group">
+                <label for="apiKey">API Key:</label>
+                <input type="text" id="apiKey" name="apiKey" placeholder="Enter API Key" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="posmExecutablePath">POSM Executable Path:</label>
+                <input type="text" id="posmExecutablePath" name="posmExecutablePath" placeholder="Enter the POSM executable path" class="form-control">
+            </div>
+
+            <!-- Connection Type Selection -->
+            <div class="form-group">
+                <label>Select the connection Type:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="connectionType" id="accessConnection" value="Access Connection" checked>
+                    <label class="form-check-label" for="accessConnection">
+                        POSM truck - Access
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="connectionType" id="sqlConnection" value="SQL Connection">
+                    <label class="form-check-label" for="sqlConnection">
+                        POSM Server - SQL Server
+                    </label>
+                </div>
+            </div>
+
+            <!-- Button to show SQL Server connection fields -->
+            <div class="form-group">
+                <button type="button" id="showSqlFieldsButton" class="btn btn-secondary" onclick="toggleSqlFields()">SQL Server Connection</button>
+            </div>
+
+            <!-- Hidden SQL Server Connection Fields -->
+            <div id="sqlFields" style="display: none;">
+                <div class="form-group">
+                    <label for="SQLInstance">SQL Server Instance Name:</label>
+                    <input type="text" id="SQLInstance" name="SQLInstance" placeholder="Enter the SQL Server Instance Name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="databaseName">POSM Database Name:</label>
+                    <input type="text" id="databaseName" name="databaseName" placeholder="Enter the SQL Server Database Name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="SQLUser">Username:</label>
+                    <input type="text" id="SQLUser" name="SQLUser" placeholder="Enter the SQL Server User" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="SQLPass">Password:</label>
+                    <input type="password" id="SQLPass" name="SQLPass" placeholder="Enter the SQL Server password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button type="button" id="testConnectionButton" class="btn btn-info" onclick="testSqlConnection()">Test Connection</button>
+                </div>
+                <div id="connectionMessage">
+                    <!-- Loading Indicator -->
+                    <div id="loadingIndicator" style="display: none; text-align: center;">
+                        <img src="../../assets/loading-gif.gif" alt="Loading...">
+                    </div>
+                    <!-- Message Text -->
+                    <div id="messageText"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mapId">Web Map Id from ESRI:</label>
+                <input type="text" id="mapId" name="mapId" placeholder="Enter map ID from ESRI contents" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="idField">ID Field:</label>
+                <input type="text" id="idField" name="idField" placeholder="Enter the Unique ID name to be inspected" class="form-control">
+            </div>
+            <div class="button-container">
+                <button type="button" onclick="submitConfig()" class="btn btn-primary">Save Configuration</button>
+            </div>
+            <div class="image-container">
+                <img src="../../assets/POSM-Logo-150px.png" alt="POSM-Image">
+            </div>
+        </form>
+    </div>
+
+    <!-- JavaScript for functionality -->
+    <script>
+        // Toggle SQL fields visibility
+        function toggleSqlFields() {
+            const sqlFields = document.getElementById('sqlFields');
+            const sqlConnectionRadio = document.getElementById('sqlConnection');
+
+            if (sqlFields.style.display === 'none') {
+                sqlFields.style.display = 'block';
+                sqlConnectionRadio.checked = true;
+            } else {
+                sqlFields.style.display = 'none';
+                sqlConnectionRadio.checked = false;
+                document.getElementById('accessConnection').checked = true; // Ensure one radio is checked
+            }
+        }
+
+        // Ensure one radio button is always checked
+        document.querySelectorAll('input[name="connectionType"]').forEach(radio => {
+            radio.addEventListener('change', ensureOneRadioChecked);
+        });
+
+        function ensureOneRadioChecked() {
+            const radios = document.querySelectorAll('input[name="connectionType"]');
+            const checkedRadios = Array.from(radios).filter(radio => radio.checked);
+            if (checkedRadios.length === 0) {
+                document.getElementById('accessConnection').checked = true; // Default to Access if none checked
+            }
+        }
+
+        // Listener for configuration data from main process
+        window.electronAPI.on('config-data', (event, config) => {
+            try {
+                // Ensure values are pre-populated correctly
+                document.getElementById('apiKey').value = config.apiKey || '';
+                document.getElementById('posmExecutablePath').value = config.posmExecutablePath || '';
+                document.getElementById('SQLInstance').value = config.SQLInstance || '';
+                document.getElementById('databaseName').value = config.databaseName || '';
+                document.getElementById('SQLUser').value = config.SQLUser || '';
+                document.getElementById('SQLPass').value = config.SQLPass || '';
+                document.getElementById('mapId').value = config.mapId || '';
+                document.getElementById('idField').value = config.idField || '';
+
+                // Set the connection type based on config
+                if (config.connectionType === 'SQL Connection') {
+                    document.getElementById('sqlConnection').checked = true;
+                    document.getElementById('sqlFields').style.display = 'block';
+                } else {
+                    document.getElementById('accessConnection').checked = true;
+                    document.getElementById('sqlFields').style.display = 'none';
+                }
+            } catch (error) {
+                console.error("Error populating config data: ", error);
+            }
+        });
+
+        // Function to submit updated configuration to the main process
+        function submitConfig() {
+            // Determine selected connection type
+            const connectionType = document.querySelector('input[name="connectionType"]:checked').value;
+
+            const config = {
+                apiKey: document.getElementById('apiKey').value,
+                posmExecutablePath: document.getElementById('posmExecutablePath').value,
+                SQLInstance: document.getElementById('SQLInstance').value,
+                databaseName: document.getElementById('databaseName').value,
+                SQLUser: document.getElementById('SQLUser').value,
+                SQLPass: document.getElementById('SQLPass').value,
+                mapId: document.getElementById('mapId').value,
+                idField: document.getElementById('idField').value,
+                connectionType: connectionType
+            };
+            window.electronAPI.send('update-config', config);
+            window.close(); // Consider replacing with feedback to the user
+        }
+
+        // Function to test SQL connection with loading GIF
+        function testSqlConnection() {
+            // Gather credentials from the form
+            const SQLInstance = document.getElementById('SQLInstance').value.trim();
+            const databaseName = document.getElementById('databaseName').value.trim();
+            const SQLUser = document.getElementById('SQLUser').value;
+            const SQLPass = document.getElementById('SQLPass').value;
+
+            const messageTextDiv = document.getElementById('messageText');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+
+            // Clear previous messages
+            messageTextDiv.textContent = '';
+            messageTextDiv.style.color = 'black';
+
+            if (!SQLInstance || !databaseName) {
+                messageTextDiv.textContent = 'Please enter the SQL Server Instance Name and Database Name.';
+                messageTextDiv.style.color = 'red';
+                return;
+            }
+
+            const sqlCredentials = { SQLInstance, databaseName, SQLUser, SQLPass };
+
+            // Show loading indicator
+            loadingIndicator.style.display = 'block';
+
+            // Disable the Test Connection button
+            document.getElementById('testConnectionButton').disabled = true;
+
+            // Send credentials to the main process and handle the response
+            window.electronAPI.invoke('test-sql-connection', sqlCredentials)
+                .then(result => {
+                    if (result.success) {
+                        messageTextDiv.textContent = 'Connection successful!';
+                        messageTextDiv.style.color = 'green';
+                    } else {
+                        messageTextDiv.textContent = 'Connection failed: ' + result.error;
+                        messageTextDiv.style.color = 'red';
+                    }
+                })
+                .catch(err => {
+                    messageTextDiv.textContent = 'An error occurred: ' + err.message;
+                    messageTextDiv.style.color = 'red';
+                })
+                .finally(() => {
+                    // Hide loading indicator and re-enable the button
+                    loadingIndicator.style.display = 'none';
+                    document.getElementById('testConnectionButton').disabled = false;
+                });
+        }
+    </script>
+</body>
+</html>

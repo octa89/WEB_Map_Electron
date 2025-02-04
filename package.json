@@ -1,0 +1,86 @@
+{
+  "name": "posm-web-map-reader",
+  "version": "2.4.6",
+  "description": "POSM Mapreader for online versions made by Octavio Pereira",
+  "main": "./src/app/electron.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "keywords": [
+    "POSM",
+    "Mapreader",
+    "Online",
+    "POSM Online Mapreader"
+  ],
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "out": "out",
+        "name": "POSM MapReader Tools 2.4.6",
+        "icon": "assets/POSM 11 Application Icon 660.ico",
+        "asar": false,
+        "files": [
+          "src/**/*",
+          "assets/**/*",
+          "main.js",
+          "package.json"
+        ],
+        "ignore": [
+          "test/",
+          "docs/",
+          "examples/",
+          ".gitignore"
+        ]
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "POSM_MapReader_Tools",
+            "shortcutName": "POSM MapReader Tools",
+            "noMsi": true
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "win32"
+          ]
+        }
+      ],
+      "build": {
+        "compression": "maximum"
+      }
+    }
+  },
+  "author": "Octavio Pereira - POSM Software",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.4.0",
+    "@electron-forge/maker-deb": "^7.4.0",
+    "@electron-forge/maker-rpm": "^7.4.0",
+    "@electron-forge/maker-squirrel": "^7.4.0",
+    "@electron-forge/maker-zip": "^7.4.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
+    "@electron-forge/plugin-fuses": "^7.4.0",
+    "@electron/fuses": "^1.8.0",
+    "electron": "^30.0.2",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "datatables": "^1.10.18",
+    "datatables.net": "^2.1.2",
+    "datatables.net-dt": "^2.1.2",
+    "electron-squirrel-startup": "^1.0.1",
+    "express": "^4.19.2",
+    "jquery": "^3.7.1",
+    "jsrsasign": "^11.1.0",
+    "odbc": "^2.4.8",
+    "progressbar.js": "^1.1.1",
+    "uuid": "^10.0.0"
+  }
+}

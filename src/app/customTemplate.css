@@ -1,0 +1,100 @@
+body {
+    background-image: linear-gradient(to right, #2C3E50, #000000); /* Gradient from dark gray to black */
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.input-group {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 500px;
+    height: 600px;
+    background-image: linear-gradient(to right, #bdc3c7, #2c3e50); 
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 121, 193);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: medium;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(0, 121, 193);
+}
+
+#customTemplate {
+    flex-grow: 1;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #0079c1;
+    color: #ffffff;
+    border-radius: 5px;
+    font-family: 'Roboto Mono', monospace;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+#customTemplate:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 121, 193);
+}
+
+#saveCustomTemplate {
+    width: 80px; 
+    background-color: #0079c1;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: -20px;
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+#saveCustomTemplate:hover {
+    background-color: #7cc1e9;
+    box-shadow: 0 0 15px rgba(0, 121, 193);
+}
+
+button#saveCustomTemplate {
+    margin-left: 20px; /* Adjust the value as needed */
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0079c1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0079c1;
+}

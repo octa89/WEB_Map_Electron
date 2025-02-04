@@ -1,0 +1,147 @@
+body {
+    background-image: linear-gradient(to right, #2C3E50, #000000);
+    border-radius: 20px;
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.container {
+    width: 500px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 121, 193);
+    margin: 20px 0;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(0, 121, 193);
+}
+
+h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 121, 193);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #0079c1;
+    color: #0079c1;
+    border-radius: 5px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 121, 193);
+}
+
+.btn-primary {
+    background-color: #0079c1;
+    border: none;
+    color: #000;
+    padding: 10px 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    display: block;
+    align-self: center; /* Aligns the button to the right */
+}
+
+/* Button styling on hover */
+.btn-primary:hover {
+    background-color: #0079c1;
+    box-shadow: 0 0 15px rgb(40, 137, 194);
+}
+
+/* Adjusting #fieldPairing for better spacing and responsiveness */
+#fieldPairing {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds space between each field */
+    margin-bottom: 20px; /* Space between fields and the button */
+}
+
+/* Style for each field pair */
+.field-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adds spacing within each field pair */
+}
+
+/* Center the fieldPairing div */
+#fieldPairing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Apply font family to dropdowns */
+select.form-control {
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Responsive button placement based on screen size */
+@media (max-width: 600px) {
+    #fieldPairing {
+        align-items: stretch; /* Makes the button and fields align to full width on small screens */
+    }
+    .btn-primary {
+        width: 100%; /* Button takes full width on smaller screens */
+        align-self: center; /* Center the button on smaller screens */
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0079c1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0079c1;
+}
+
+#attributesOutput {
+    white-space: pre-wrap;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border: 1px solid #0079c1;
+    color: #0079c1;
+    margin-top: 20px;
+    border-radius: 5px;
+}

@@ -1,0 +1,12 @@
+{
+  "apiKey": "AAPTxy8BH1VEsoebNVZXo8HurA6tnS5PT8r4oVQiLhZHjtpWTQwVttP_bYARmpLIPMy0PRuzBHTVU96_5n3QnsrqR-vXHuT5_yhDzfnT4-UlDbz-QGs-LSHay-C4Hiyeqw1zjoD20sjNey6woGNv94QKPFhKg3Y-3UHPLtT0CQfcybIg0OZvU6NL04VWm7ddTcsTr0p_p8xMNPx6oZdjFvenUaFogeOCswntR8oiqrw7B-FSizbQ0Ksspg_4Oq3U3ea6AT1_BZiC5xAv",
+  "posmExecutablePath": "C:\\POSM\\POSM.exe",
+  "SQLInstance": "POSM",
+  "databaseName": "posm",
+  "SQLUser": "POSM",
+  "SQLPass": "",
+  "mapId": "3a0241d5bb564c9b86a7a312ba2703d3",
+  "idField": "AssetID",
+  "connectionType": "Access Connection",
+  "inspectionType": "NASSCO PACP"
+}

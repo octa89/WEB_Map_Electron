@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POSM MapReader Tools 2.4.6</title>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.29/esri/themes/light/main.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://js.arcgis.com/calcite-components/2.5.1/calcite.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
+    <script src="https://js.arcgis.com/4.29/"></script>
+  </head>
+
+  <body>
+    <div class="posm-logo-container">
+      <a
+        href="https://www.posmsoftware.com"
+        target="_blank"
+        rel="noopener"
+        aria-label="Visit POSM Software website"
+      ></a>
+      <img src="../../assets/POSMBlack.png" alt="POSM Logo" />
+    </div>
+    <div id="progress-bar-container">
+      <div class="progress-text" id="progress-text">0%</div>
+    </div>
+    <div id="viewDiv"></div>
+
+    <button id="launchButton" class="btn">
+      <img src="../../assets/POSM_Favicon_PNG_File_16x16.png" alt="POSM Icon" />
+      Start POSM
+    </button>
+
+    <script src="main.js"></script>
+    <script src="./launch.js"></script>
+  </body>
+</html>

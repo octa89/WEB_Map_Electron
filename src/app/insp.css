@@ -1,0 +1,158 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    line-height: 1.42em;
+    box-sizing: border-box;
+    background-image: linear-gradient(to right, #2C3E50, #000000); /* Gradient from dark gray to black */
+    color: #ffffff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+input[type="search"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #0079c1;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 121, 193, 0.2);
+    font-family: 'Roboto Mono', monospace;
+}
+/* Existing styles... */
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.3); /* Scale down to 50% */
+    z-index: 1000;
+}
+
+/* Rest of your CSS... */
+
+
+
+/* Base styling for the search input */
+input[type="search"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #0079c1;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff; /* Change the typed text color to white */
+    font-size: 16px;
+    font-weight: bold; /* Make the typed text bold */
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 121, 193, 0.2);
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Focus state to highlight the input */
+input[type="search"]:focus {
+    color: #000000; /* Ensure the text remains white on focus */
+    border-color: #0079c1;
+    box-shadow: 0 0 15px rgba(0, 121, 193, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
+    font-weight: bold; /* Keep the text bold on focus */
+}
+label {
+    color: #ffffff; /* Change text color to white */
+    font-weight: bold; /* Make the text bold */
+    font-family: 'Roboto Mono', monospace; /* Optional: Change font family */
+    font-size: 16px; /* Optional: Adjust the font size */
+}
+option{
+    background-color: #ffffff;
+}
+
+/* Placeholder styling */
+input[type="search"]::placeholder {
+    color: #FF667A; /* Change to your desired color */
+    font-family: 'Roboto Mono', monospace; /* Change font */
+    font-size: 14px; /* Adjust font size if needed */
+    font-style: italic; /* Optional: makes the placeholder text italic */
+    opacity: 1; /* Ensures full visibility of the placeholder */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: separate; /* Use 'separate' to allow rounded corners */
+    border-spacing: 0; /* Remove gaps between borders */
+    color: #0e0e0e;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures content stays within rounded borders */
+}
+
+th, thead {
+    color: #fff9f9; /* Text color */
+    background-image: linear-gradient(to right, #bdc3c7, #2c3e50); /* Gradient from light gray to dark gray */
+    padding: 15px;
+    font-size: 16px;
+    text-align: left;
+}
+
+td {
+    position: relative;
+    padding: 15px;
+    background-color: #ffffff;
+    color: #000000;
+}
+/* Apply rounded corners specifically to the table header and footer */
+th:first-child {
+    border-top-left-radius: 10px; /* Top-left corner */
+}
+
+th:last-child {
+    border-top-right-radius: 10px; /* Top-right corner */
+}
+
+
+/* Highlight effect for hovered cells */
+td:hover {
+    background-image: linear-gradient(135deg, #4ca1af, #c4e0e5); /* Gradient colors */
+    color: #000000; /* Optional: Change text color on hover */
+    font-weight: bold; /* Optional: Make text bold on hover */
+    box-shadow: 0 0 10px rgba(0, 121, 193, 0.5); /* Optional: Add shadow for effect */
+    transition: background 0.3s ease; /* Smooth transition */
+}
+
+.header-image {
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Add some padding around the image */
+    background-color: rgba(0, 121, 193, 0.1); /* Optional: Light blue background to highlight the logo */
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 121, 193, 0.3); /* Optional: Subtle shadow for depth */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+/* Style for the image itself */
+.header-image img {
+    max-width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove bottom space */
+    border-radius: 5px; /* Optional: Slight rounding on the image */
+}
